@@ -36,7 +36,8 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'rest-client'
-  
+
+  gem 'addressable'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
