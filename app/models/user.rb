@@ -22,4 +22,13 @@ class User < ActiveRecord::Base
   through: :contact_shares,
   source: :contact
   )
+
+  has_many(
+  :authored_comments,
+  foreign_key: :author_id,
+  primary_key: :id,
+  class_name: 'Comment'
+  )
+
+  has_many :comments, as: :commentable
 end
