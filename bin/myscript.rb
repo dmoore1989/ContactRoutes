@@ -5,17 +5,10 @@ url = Addressable::URI.new(
   scheme: 'http',
   host: 'localhost',
   port: 3000,
-  path: '/users.html'
+  path: '/users/1'
 ).to_s
 
-params = {
-  user: {
-    name: 'Ben',
-    email: 'ben@email.com'
-  }
-
-}
-
 #puts RestClient.get(url)
+params = {user: {username: 'doug'}}
 
-puts RestClient.post(url, params)
+ puts RestClient.patch(url, params)
