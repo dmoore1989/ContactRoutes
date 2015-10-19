@@ -30,5 +30,7 @@ class User < ActiveRecord::Base
   class_name: 'Comment'
   )
 
+  has_many :groups
+
   has_many :comments, as: :commentable
 end

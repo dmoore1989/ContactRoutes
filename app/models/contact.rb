@@ -22,5 +22,8 @@ class Contact < ActiveRecord::Base
   source: :user
   )
 
+  has_many :contact_groupings
+
   has_many :comments, as: :commentable
+  has_many :groups, through: :contact_groupings, source: :group
 end

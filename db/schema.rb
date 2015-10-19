@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019204739) do
+ActiveRecord::Schema.define(version: 20151019213341) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "title"
@@ -26,9 +26,15 @@ ActiveRecord::Schema.define(version: 20151019204739) do
   add_index "comments", ["author_id"], name: "index_comments_on_author_id"
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
 
+  create_table "contact_groupings", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "contact_id"
+  end
+
   create_table "contact_shares", force: :cascade do |t|
     t.integer "contact_id"
     t.integer "user_id"
+    t.boolean "favorited",  default: false
   end
 
   add_index "contact_shares", ["contact_id"], name: "index_contact_shares_on_contact_id"
@@ -41,9 +47,17 @@ ActiveRecord::Schema.define(version: 20151019204739) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007f99ce63f938>"
+    t.boolean  "favorited",                                                             default: false
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
