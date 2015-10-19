@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019180651) do
+ActiveRecord::Schema.define(version: 20151019184011) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007f99ce63f938>"
+  end
+
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
   end
 
 end
