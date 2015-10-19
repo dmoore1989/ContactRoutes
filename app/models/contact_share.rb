@@ -8,6 +8,7 @@ class ContactShare < ActiveRecord::Base
   foreign_key: :contact_id,
   primary_key: :id
   )
+  
   belongs_to(
   :user,
   class_name: "User",
